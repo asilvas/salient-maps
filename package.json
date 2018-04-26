@@ -4,8 +4,8 @@
   "description": "Various open source salient maps",
   "main": "src/models.js",
   "scripts": {
-    "benchmark": "node ./trainer/scripts/main.js --image-source ./test/images --recursive true --save false --preview false --compare true --models all",
-    "preview": "node ./trainer/scripts/main.js --image-source ./trainer/image-source/CAT2000/Action --recursive true --save false --preview true --previewTimeout 5000 --compare true --models all --width 300 --height 300 --random false",
+    "benchmark": "node ./trainer/scripts/main.js --image-source ./trainer/image-source --recursive true --save false --preview false --compare true --models all",
+    "preview": "node ./trainer/scripts/main.js --image-source ./trainer/image-source --recursive true --save false --preview true --previewTimeout 3000 --compare true --models all --width 300 --height 300 --random true",
     "export": "node ./trainer/scripts/main.js --image-source ./trainer/image-source --recursive true --save true --preview false --compare true --models all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
