@@ -1,0 +1,48 @@
+{
+  "name": "salient-maps",
+  "version": "0.1.0",
+  "description": "Various open source salient maps",
+  "main": "src/models.js",
+  "scripts": {
+    "benchmark": "node ./trainer/scripts/main.js --image-source ./test/images --recursive true --save false --preview false --compare true --models all",
+    "preview": "node ./trainer/scripts/main.js --image-source ./trainer/image-source/CAT2000/Action --recursive true --save false --preview true --previewTimeout 5000 --compare true --models all --width 300 --height 300 --random false",
+    "export": "node ./trainer/scripts/main.js --image-source ./trainer/image-source --recursive true --save true --preview false --compare true --models all",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asilvas/salient-maps.git"
+  },
+  "keywords": [
+    "salient",
+    "saliency",
+    "auto-focus",
+    "opencv"
+  ],
+  "author": {
+    "name": "Aaron Silvas"
+  },
+  "license": "MIT",
+  "files": [
+    "src",
+    "LICENSE.txt",
+    "README.md",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "homepage": "https://github.com/asilvas/salient-maps#readme",
+  "dependencies": {
+    "mathjs": "^4.1.0",
+    "opencv4nodejs": "^4.3.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^5.0.0",
+    "klaw-sync": "^3.0.2",
+    "readline-sync": "^1.4.9",
+    "salient-autofocus": "^0.6.1",
+    "shuffle-array": "^1.0.1",
+    "yargs": "^11.0.0"
+  }
+}
