@@ -108,5 +108,5 @@ npm run export
 
 # License
 
-While this project falls under an MIT license, each of the models is subject to their own license.
+While this project falls under an MIT license, each of the models are subject to their own license.
 See [Models](#models) for details.
