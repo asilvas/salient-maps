@@ -239,7 +239,7 @@ module.exports = class DeepGaze extends Saliency {
     this.saliency = math.subtract(this.saliency, minVal);
     
     // CUSTOM CORRECTION, MEASURE IMPACT
-    this.saliency = math.divide(this.saliency, maxVal - minVal + 0.001);
+    this.saliency = math.divide(this.saliency, maxVal - minVal);
 
     // ALTERNATIVE: ORIGINAL
     //const div = maxVal - minVal + 0.001;

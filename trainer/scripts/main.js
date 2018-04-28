@@ -175,15 +175,27 @@ function processImage(imagePath) {
     };
   });
 
+  let windowX = 0;
+  let windowY = 0;
+  const showNextWindow = (title, image) => {
+    imshow(title, image);
+    cv.moveWindow(title, windowX, windowY);
+    windowX += argv.width;
+    if (windowX + argv.width > 1200) {
+      windowX = 0;
+      windowY += argv.height + 45;
+    }
+  };
+
   if (argv.preview === true) {
     destroyAllWindows();
     let originalPreview = paintPreviewWithAutoFocus(image.resize(argv.height, argv.width, 0, 0, INTER_LINEAR_EXACT), results[0].salientMeta);
+    showNextWindow(`Original: ${relPath}`, originalPreview);
     results.forEach(result => {
       //imshow(`BIN: ${result.key}`, result.binaryMap);
-      imshow(`SAL: ${result.key}`, paintPreviewWithAutoFocus(result.saliencyMap, result.salientMeta));
-      if (result.truthMap) imshow('TRUTH', result.truthMap);
+      showNextWindow(`SAL: ${result.key}`, paintPreviewWithAutoFocus(result.saliencyMap, result.salientMeta));
     });
-    imshow(`Original: ${relPath}`, originalPreview);
+    if (results[0].truthMap) showNextWindow('TRUTH', results[0].truthMap);
     //console.log('Press any key to continue.');
     //readlineSync.keyInPause();
     waitKey(argv.previewTimeout);
