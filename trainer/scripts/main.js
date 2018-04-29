@@ -87,7 +87,7 @@ const imageTruth = klawSync(imageTruthPath, { nodir: true, filter: imageTruthFil
 const filteredModels = Object.keys(models).filter(modelKey => {
   if (argv.models[0] === 'all') return true; // nothing more to do
 
-  return argv.models.indexOf(modelKey)
+  return argv.models.indexOf(modelKey) >= 0;
 }).map(modelKey => { return { key: modelKey, title: models[modelKey].title, Model: models[modelKey].load() }; });
 
 console.log(`Found ${imageSource.length} source images, ${imageTruth.length} truth images`);
