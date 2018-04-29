@@ -1,6 +1,6 @@
 {
   "name": "salient-maps",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Various open source salient maps",
   "main": "src/models.js",
   "scripts": {

@@ -2,7 +2,7 @@
 
 Various open source salient maps.
 
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/maps.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/maps.jpg)
 
 
 # Developer Usage
@@ -32,12 +32,12 @@ While it's entirely up to you how use these maps, the original intent of this pr
 be paired with the [salient-autofocus](https://github.com/asilvas/salient-autofocus) project
 for providing fast image auto-focus capabilities.
 
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/salient7.jpg)
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/salient8.jpg)
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/salient9.jpg)
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/salient10.jpg)
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/salient11.jpg)
-![](https://github.com/asilvas/salient-maps/blob/master/docs/images/salient6.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/salient7.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/salient8.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/salient9.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/salient10.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/salient11.jpg)
+![](https://github.com/asilvas/salient-maps/raw/master/docs/images/salient6.jpg)
 
 
 # Models
