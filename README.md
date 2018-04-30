@@ -86,7 +86,7 @@ npm run preview
 
 ## Benchmark
 
-If all you're interested in is determing performance data:
+Compare performance data between models:
 
 ```
 npm run benchmark
