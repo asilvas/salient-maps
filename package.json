@@ -35,14 +35,14 @@
   },
   "homepage": "https://github.com/asilvas/salient-maps#readme",
   "dependencies": {
-    "mathjs": "^4.1.0",
-    "opencv4nodejs": "^4.3.0"
+    "mathjs": "^4.2.1",
+    "opencv4nodejs": "^4.4.0"
   },
   "devDependencies": {
     "fs-extra": "^5.0.0",
     "klaw-sync": "^3.0.2",
     "readline-sync": "^1.4.9",
-    "salient-autofocus": "^0.6.1",
+    "salient-autofocus": "^0.7.1",
     "shuffle-array": "^1.0.1",
     "yargs": "^11.0.0"
   }
