@@ -208,8 +208,8 @@ function paintPreviewWithAutoFocus(image, meta) {
   meta.r25th && preview.drawRectangle(new Rect(meta.r25th.l * image.cols, meta.r25th.t * image.rows, meta.r25th.w * image.cols, meta.r25th.h * image.rows), new Vec(100, 100, 255));
   meta.r40th && preview.drawRectangle(new Rect(meta.r40th.l * image.cols, meta.r40th.t * image.rows, meta.r40th.w * image.cols, meta.r40th.h * image.rows), new Vec(150, 150, 255));
   meta.r50th && preview.drawRectangle(new Rect(meta.r50th.l * image.cols, meta.r50th.t * image.rows, meta.r50th.w * image.cols, meta.r50th.h * image.rows), new Vec(0, 0, 255));
-  //meta.r75th && preview.drawRectangle(new Rect(meta.r75th.l * image.cols, meta.r75th.t * image.rows, meta.r75th.w * image.cols, meta.r75th.h * image.rows), new Vec(0, 255, 255));
-  //meta.r90th && preview.drawRectangle(new Rect(meta.r90th.l * image.cols, meta.r90th.t * image.rows, meta.r90th.w * image.cols, meta.r90th.h * image.rows), new Vec(0, 255, 0));
+  meta.r75th && preview.drawRectangle(new Rect(meta.r75th.l * image.cols, meta.r75th.t * image.rows, meta.r75th.w * image.cols, meta.r75th.h * image.rows), new Vec(0, 255, 255));
+  meta.r90th && preview.drawRectangle(new Rect(meta.r90th.l * image.cols, meta.r90th.t * image.rows, meta.r90th.w * image.cols, meta.r90th.h * image.rows), new Vec(0, 255, 0));
 
   let salientRegion;
 
