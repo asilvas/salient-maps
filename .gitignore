@@ -60,3 +60,5 @@ typings/
 .env
 
 trainer/image*
+trainer/auto-focus/user.json
+trainer/auto-focus/cache/
