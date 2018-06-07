@@ -42,7 +42,7 @@ const argv = yargs
     type: 'number'
   })
   .option('cropRatio', {
-    default: 0.6,
+    default: 0.75,
     type: 'number'
   })
   .option('minPoints', {
@@ -203,13 +203,14 @@ function createImageTask({ url, mean }) {
             const meanX = (region.left + Math.round(region.width / 2)) / argv.width;
             const meanY = (region.top + Math.round(region.height / 2)) / argv.height;
             const distance = (Math.abs(meanX - mean.x) + Math.abs(meanY - mean.y)) / 2;
+            //console.log(`* model[${m.key}] x:${meanX}, y:${meanY}, distance:${distance}`);
 
             modelResults[m.key] = distance;
           });
         } catch (ex) {
           return cb(ex);
         }
-
+//console.log(modelResults);
         cb(null, modelResults);
       }]
     }, (err, results) => {
@@ -223,7 +224,7 @@ function createImageTask({ url, mean }) {
         });
       }
 
-      if ((accuracy.tasks % 10) === 0) displayStatus();
+      if ((accuracy.tasks % 50) === 0) displayStatus();
 
       cb();
     })

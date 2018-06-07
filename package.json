@@ -4,9 +4,9 @@
   "description": "Various open source salient maps",
   "main": "src/models.js",
   "scripts": {
-    "auto-focus": "node ./trainer/scripts/auto-focus.js --source ./trainer/auto-focus/user.json --models deep deep-rgb spectral --width 150 --height 150 --top 400 --min-points 2 --random false",
+    "auto-focus": "node ./trainer/scripts/auto-focus.js --source ./trainer/auto-focus/stock.json --models deep spectral --width 200 --height 200 --top 200 --min-points 5 --random false",
     "benchmark": "node ./trainer/scripts/main.js --image-source ./trainer/image-source --recursive true --save false --preview false --compare true --models deep spectral",
-    "preview": "node ./trainer/scripts/main.js --image-source ./trainer/image-source/CAT2000/Stimuli/Social --recursive true --save false --preview true --previewTimeout 3000 --compare true --models deep deep-rgb spectral --width 400 --height 400 --random true",
+    "preview": "node ./trainer/scripts/main.js --image-source ./trainer/image-source/CAT2000/Social --recursive true --save false --preview true --previewTimeout 3000 --compare true --models deep deep-rgb spectral --width 400 --height 400 --random true",
     "export": "node ./trainer/scripts/main.js --image-source ./trainer/image-source --recursive true --save true --preview false --compare true --models deep spectral",
     "start": "npm run preview",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -40,6 +40,7 @@
     "opencv4nodejs": "^4.4.0"
   },
   "devDependencies": {
+    "async": "^2.6.1",
     "fs-extra": "^5.0.0",
     "klaw-sync": "^3.0.2",
     "md5": "^2.2.1",
