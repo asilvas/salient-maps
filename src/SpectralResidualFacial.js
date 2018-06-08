@@ -43,6 +43,9 @@ const cv = require('opencv4nodejs');
 const { waitKey, Mat, Vec, Vec2, Size, Point, Point2, BORDER_DEFAULT, TermCriteria, KMEANS_RANDOM_CENTERS, CV_8U, CV_8UC1, CV_64FC2, CV_32F, CV_64F, threshold, THRESH_BINARY, THRESH_OTSU, BinaryMap, cvtColor, COLOR_BGR2GRAY, resize, merge, dft, split, cartToPolar, polarToCart, log, blur, exp, GaussianBlur, minMaxLoc, imshow, imshowWait, INTER_LINEAR_EXACT, DFT_INVERSE } = cv;
 const Saliency = require('./Saliency');
 
+const DEFAULT_CONFIDENCE = 7;
+const FALSE_POSITIVE_THRESHOLD = 0.7;
+
 const FACE_CLASSIFIERS = [
   /*{
     id: 'HAAR_EYE',
@@ -62,13 +65,13 @@ const FACE_CLASSIFIERS = [
   {
     id: 'HAAR_FRONTALFACE_ALT',
     classifier: new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT),
-    minConfidence: 10,
+    minConfidence: DEFAULT_CONFIDENCE,
     weight: 1.0
   },
   {
     id: 'HAAR_FRONTALFACE_ALT2',
     classifier: new cv.CascadeClassifier(cv.HAAR_FRONTALFACE_ALT2),
-    minConfidence: 10,
+    minConfidence: DEFAULT_CONFIDENCE,
     weight: 1.0
   }/*,
   {
@@ -91,7 +94,7 @@ const FACE_CLASSIFIERS = [
   {
     id: 'HAAR_PROFILEFACE',
     classifier: new cv.CascadeClassifier(cv.HAAR_PROFILEFACE),
-    minConfidence: 10,
+    minConfidence: DEFAULT_CONFIDENCE,
     weight: 1.0
   }/*,
   {
@@ -150,6 +153,7 @@ module.exports = class SpectralResidual extends Saliency {
       gray = resized;
     }
 
+    const maxY = Math.round(this.height * FALSE_POSITIVE_THRESHOLD);
     const minSize = new Size(Math.round(this.width * 0.03), Math.round(this.height * 0.03)); // 3%
     const maxSize = new Size(Math.round(this.width * 0.30), Math.round(this.height * 0.30)); // 30%
     let objects = [];
@@ -158,8 +162,10 @@ module.exports = class SpectralResidual extends Saliency {
       const results = classifier.detectMultiScale(gray, 1.1, 1, 0/*, 0, minSize, maxSize*/);
       ((results.objects && results.objects) || results)
         .forEach((rect, idx) => {
+          if ((rect.y + rect.height) > maxY) return;
           const confidence = (results.numDetections && results.numDetections[idx]) || (minConfidence * 2);
-          //if (confidence < minConfidence) return;
+          if (confidence < minConfidence) return;
+          //console.log(`confidence.${id}:`, confidence);
           objects.push({
             rect, id,
             weight: (weight * (confidence / 20) * (idealRegionSize / (rect.width * rect.height))),
@@ -200,7 +206,7 @@ module.exports = class SpectralResidual extends Saliency {
     const { minVal, maxVal } = magnitude.minMaxLoc();
 
     objects.forEach(o => {
-      intensifyRegion(magnitude, o.rect, 0.5/*o.weight*/, maxVal);
+      intensifyRegion(magnitude, o.rect, 0.3/*o.weight*/, maxVal * 1.2);
     });
     magnitude = magnitude.div(maxVal);
     
