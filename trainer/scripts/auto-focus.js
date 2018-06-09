@@ -50,7 +50,7 @@ const argv = yargs
     type: 'number'
   })
   .option('parallelLimit', {
-    default: 4,
+    default: 8,
     type: 'number'
   })
   .option('removeOutliers', {
@@ -143,7 +143,7 @@ function displayStatus() {
   Object.keys(accuracy.models).forEach(key => {
     const percent = 100 - ((accuracy.models[key].sum / accuracy.results) * 100);
 
-    console.log(`* Model[${key}].accuracy = ${percent.toFixed(2)}%`);
+    console.log(`* Model[${key}].accuracy = ${percent.toFixed(3)}%`);
   });
 }
 
